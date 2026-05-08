@@ -1,0 +1,60 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build for ${{ matrix.os }} (${{ matrix.arch }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            goos: linux
+            arch: amd64
+            binary_name: remotesync-linux-amd64
+          - os: ubuntu-latest
+            goos: linux
+            arch: arm64
+            binary_name: remotesync-linux-arm64
+          - os: windows-latest
+            goos: windows
+            arch: amd64
+            binary_name: remotesync-windows-amd64.exe
+          - os: macos-latest
+            goos: darwin
+            arch: amd64
+            binary_name: remotesync-macos-amd64
+          - os: macos-latest
+            goos: darwin
+            arch: arm64
+            binary_name: remotesync-macos-arm64
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.20'
+          cache: true
+
+      - name: Build
+        env:
+          GOOS: ${{ matrix.goos }}
+          GOARCH: ${{ matrix.arch }}
+        run: |
+          go build -v -o ${{ matrix.binary_name }} .
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.binary_name }}
+          path: ${{ matrix.binary_name }}
