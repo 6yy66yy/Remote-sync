@@ -1,0 +1,19 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+dist/
+
+# Configuration
+# config.yaml
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Go
+vendor/
+go.sum
