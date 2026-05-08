@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	sshclient "tomcat-sync/ssh"
+	sshclient "remotesync/ssh"
 )
 
 // UploadResult 单个文件的上传结果

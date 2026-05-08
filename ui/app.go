@@ -9,10 +9,10 @@ import (
 	"sync"
 	"time"
 
-	sshclient "tomcat-sync/ssh"
-	"tomcat-sync/config"
-	"tomcat-sync/compare"
-	"tomcat-sync/upload"
+	sshclient "remotesync/ssh"
+	"remotesync/config"
+	"remotesync/compare"
+	"remotesync/upload"
 )
 
 const (
@@ -56,7 +56,7 @@ func (a *App) Run() error {
 		a.cfg = &config.Config{Servers: []config.Server{}}
 	}
 
-	fmt.Printf("\n%s%s\n  Tomcat 部署同步工具 v1.0\n  快速对比本地与服务器文件差异，增量更新部署\n%s\n",
+	fmt.Printf("\n%s%s\n  RemoteSync 远程同步工具 v1.0\n  快速对比本地与服务器文件差异，实现高效同步\n%s\n",
 		bold+bgBlue+"                              "+resetColor,
 		bold+"                              ",
 		"══════════════════════════════════════════")

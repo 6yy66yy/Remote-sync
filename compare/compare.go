@@ -12,7 +12,7 @@ import (
 	"sync"
 	"time"
 
-	sshclient "tomcat-sync/ssh"
+	sshclient "remotesync/ssh"
 )
 
 var defaultIgnorePatterns = []string{

@@ -38,7 +38,7 @@ func DefaultConfigPath() string {
 	if err != nil {
 		return "config.yaml"
 	}
-	return filepath.Join(home, ".tomcat-sync", "config.yaml")
+	return filepath.Join(home, ".remotesync", "config.yaml")
 }
 
 // Load 从 YAML 文件加载配置

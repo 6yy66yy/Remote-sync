@@ -1,4 +1,4 @@
-module tomcat-sync
+module remotesync
 
 go 1.20
 

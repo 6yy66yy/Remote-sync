@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"tomcat-sync/config"
-	"tomcat-sync/ui"
+	"remotesync/config"
+	"remotesync/ui"
 )
 
 func main() {
