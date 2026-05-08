@@ -49,6 +49,19 @@ go build -o remotesync.exe
 - `compare/`: 核心差异算法，实现文件状态对比。
 - `upload/`: 负责具体的文件上传与任务调度。
 
+## 📦 发布与部署
+
+本项目使用 GitHub Actions 实现了自动化流水线：
+
+- **持续集成**: 每当推送至 `master` 分支时，会自动在 Windows、Linux 和 macOS 平台上进行构建验证。
+- **自动发布**: 当你推送以 `v` 开头的标签（例如 `v1.0.0`）时，工作流会自动创建 GitHub Release，并将所有平台的二进制文件作为附件上传。
+
+**如何触发发布**:
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
 ## 📄 许可证
 
 [MIT License](LICENSE)
